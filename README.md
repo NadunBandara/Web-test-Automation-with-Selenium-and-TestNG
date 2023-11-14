@@ -53,22 +53,7 @@ Integrating TestNG into your project allows you to benefit from its powerful tes
 ## Facebook Login Automation Example
 The following code snippet demonstrates a Facebook login automation test using Selenium WebDriver and TestNG:
 
-``java
 // FacebookLogin class
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
-
-import com.google.common.io.Files;
-
-import java.io.File;
-
 public class FacebookLogin {
 
     // Global variable declaration
