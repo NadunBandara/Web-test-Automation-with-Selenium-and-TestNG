@@ -22,7 +22,7 @@ public class FacebookLogin {
 	
 	//Global variable declaration
 	public String baseURL="https://web.facebook.com/login/?_rdc=1&_rdr";
-	public String driverPath="D:\\\\Eclipse-workplace\\\\SQA_Batch26_TestNG\\\\Thirdparty_Resource_Files\\\\Chrome Driver\\\\V118.exe";
+	public String driverPath="D:\\\\Eclipse-workplace\\\\SQA_Batch26_TestNG\\\\Thirdparty_Resource_Files\\\\Chrome Driver\\\\V119.exe";
 	public WebDriver driver;
 		
 	//Before test
@@ -57,7 +57,7 @@ public class FacebookLogin {
 	@AfterTest
 	public void AfterTestExecutionProcess()
 	{
-		driver.quit();
+		//driver.quit();
 	}
   
 	//Additional Methods

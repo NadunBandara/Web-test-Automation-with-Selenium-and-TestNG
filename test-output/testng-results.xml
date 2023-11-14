@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-11-04T18:56:37 IST" name="Default suite" finished-at="2023-11-04T18:56:50 IST" duration-ms="12955">
+  <suite started-at="2023-11-14T10:27:08 IST" name="Default suite" finished-at="2023-11-14T10:27:20 IST" duration-ms="11945">
     <groups>
     </groups>
-    <test started-at="2023-11-04T18:56:37 IST" name="Default test" finished-at="2023-11-04T18:56:50 IST" duration-ms="12955">
+    <test started-at="2023-11-14T10:27:08 IST" name="Default test" finished-at="2023-11-14T10:27:20 IST" duration-ms="11945">
       <class name="testNGPractical.FacebookLogin">
-        <test-method is-config="true" signature="beforeTestExecution()[pri:0, instance:testNGPractical.FacebookLogin@35aea049]" started-at="2023-11-04T18:56:37 IST" name="beforeTestExecution" finished-at="2023-11-04T18:56:40 IST" duration-ms="2900" status="PASS">
+        <test-method is-config="true" signature="beforeTestExecution()[pri:0, instance:testNGPractical.FacebookLogin@35aea049]" started-at="2023-11-14T10:27:08 IST" name="beforeTestExecution" finished-at="2023-11-14T10:27:12 IST" duration-ms="3403" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTestExecution -->
-        <test-method signature="FacebookLoginFunction()[pri:0, instance:testNGPractical.FacebookLogin@35aea049]" started-at="2023-11-04T18:56:40 IST" name="FacebookLoginFunction" finished-at="2023-11-04T18:56:50 IST" duration-ms="10019" status="PASS">
+        <test-method signature="FacebookLoginFunction()[pri:0, instance:testNGPractical.FacebookLogin@35aea049]" started-at="2023-11-14T10:27:12 IST" name="FacebookLoginFunction" finished-at="2023-11-14T10:27:20 IST" duration-ms="8481" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- FacebookLoginFunction -->
-        <test-method is-config="true" signature="AfterTestExecutionProcess()[pri:0, instance:testNGPractical.FacebookLogin@35aea049]" started-at="2023-11-04T18:56:50 IST" name="AfterTestExecutionProcess" finished-at="2023-11-04T18:56:50 IST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="AfterTestExecutionProcess()[pri:0, instance:testNGPractical.FacebookLogin@35aea049]" started-at="2023-11-14T10:27:20 IST" name="AfterTestExecutionProcess" finished-at="2023-11-14T10:27:20 IST" duration-ms="2" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- AfterTestExecutionProcess -->
