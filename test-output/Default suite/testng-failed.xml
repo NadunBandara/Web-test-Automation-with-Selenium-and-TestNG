@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testNGPractical.FacebookLogin">
+      <class name="testNGPractical.Individual_Assignment">
         <methods>
-          <include name="beforeTestExecution"/>
+          <include name="ButtonTrasition"/>
           <include name="AfterTestExecutionProcess"/>
-          <include name="FacebookLoginFunction"/>
+          <include name="beforeTestExecution"/>
         </methods>
-      </class> <!-- testNGPractical.FacebookLogin -->
+      </class> <!-- testNGPractical.Individual_Assignment -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
