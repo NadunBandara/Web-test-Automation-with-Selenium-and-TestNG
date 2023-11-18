@@ -1,6 +1,6 @@
 package testNGPractical;
 
-import java.io.File;
+import java.io.File; 
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
@@ -10,8 +10,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import java.util.concurrent.TimeUnit;
 import java.time.Duration;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.concurrent.TimeoutException;
 
 import org.testng.annotations.AfterTest;
@@ -247,12 +249,9 @@ public class Individual_Assignment {
 			System.out.println("---------------TC 006---------------");
 			Thread.sleep(2000);
 			
+			//find the text "Product"
 			WebElement elementhead = driver.findElement(By.className("title"));
-			elementhead.getText();	
-					
-			//Find all product list
-			//String expected_title = "Products";
-			//String actual_title = driver.getTitle();	
+			elementhead.getText();		
 					
 			//check the product text displayed or not
 			  if (elementhead.isDisplayed()) {
@@ -270,7 +269,7 @@ public class Individual_Assignment {
 						
 			}
 	}
-		//Test Case 007: Verify products text is displayed
+		//Test Case 007: Verify title is displayed
 		@Test(priority=7)
 		public void VerifyPageTitle() throws Exception {
 			System.out.println("---------------TC 007---------------");
@@ -295,35 +294,6 @@ public class Individual_Assignment {
 				System.out.println("Expected title is not displayed");						
 			}
 	}
-		
-		/*//Test Case 008: Add to cart button transition
-		@Test(priority = 8)
-		public void ButtonTrasition() throws Exception {
-		    System.out.println("---------------TC 008---------------");
-		    Thread.sleep(2000);
-
-		    WebElement addcart_btn = driver.findElement(By.id("add-to-cart-sauce-labs-backpack"));
-		    addcart_btn.click();
-
-		    // Wait for the Remove button to be clickable
-		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		    WebElement remove_btn = wait.until(ExpectedConditions.elementToBeClickable(By.id("remove-sauce-labs-backpack")));
-
-		    remove_btn.click();
-		    Thread.sleep(2000);
-
-		    if (remove_btn.isDisplayed()) {
-		        System.out.println("Test Case 008: Passed");
-		        System.out.println("Add to Cart button is changed to Remove Button");
-
-		        // Take a screenshot of the title
-		        this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Button_Change.png");
-
-		    } else {
-		        System.out.println("Test Case 008: Failed");
-		        System.out.println("Button is not changed");
-		    }
-		}*/
 		
 		//Test Case 008: Add to cart button transition
 		@Test(priority = 8)
@@ -386,6 +356,7 @@ public class Individual_Assignment {
 		@Test(priority=10)
 		public void ClickcartIcon() throws Exception {
 		    System.out.println("---------------TC 010---------------");
+		    Thread.sleep(2000);
 		    
 		    //Identify the cart icon and click
 		    WebElement carticon = driver.findElement(By.xpath("html/body/div/div/div/div[1]/div[1]/div[3]/a"));
@@ -432,20 +403,22 @@ public class Individual_Assignment {
 				System.out.println("Expected text is not displayed");			
 			}
 	}
+		
 		//Test Case 012: Verify all the details of item is display on the page
 		@Test(priority=12)
 		public void VerifyItemDetails() throws Exception {
 			System.out.println("---------------TC 012---------------");
+			Thread.sleep(2000);
 			
 			//Identify the product name and description
 			WebElement product_name = driver.findElement(By.className("inventory_item_name"));
 			WebElement product_dsc = driver.findElement(By.className("inventory_item_desc"));
 					
-			//check the text displayed or not
+			//check the item details are displayed or not
 			  if ((product_name != null) && (product_dsc != null)) {
 				System.out.println("Test Case 012:Passed");
 				System.out.println("Item details are display on the page" );		
-				// Take a screenshot of the text
+				// Take a screenshot of the item details
 				this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Item_Details.png");					
 			}
 			else {		
@@ -453,29 +426,129 @@ public class Individual_Assignment {
 				System.out.println("Item details are not display on the page");			
 			}
 	}
+		
 		//Test Case: Verify the item price
-		/*@Test(priority=13)
+		@Test(priority=13)
 		public void VerifyItemPrice() throws Exception {
-			System.out.println("---------------TC 012---------------");
+			System.out.println("---------------TC 013---------------");
+			Thread.sleep(2000);
 			
-			//Identify the product name and description
-			WebElement product_name = driver.findElement(By.className("inventory_item_name"));
-			WebElement product_dsc = driver.findElement(By.className("inventory_item_desc"));
-					
-			//check the text displayed or not
-			  if ((product_name != null) && (product_dsc != null)) {
-				System.out.println("Test Case 012:Passed");
-				System.out.println("Item details are display on the page" );		
-				// Take a screenshot of the text
-				this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Item_Details.png");					
+			//Identify the product price
+			WebElement product_price = driver.findElement(By.className("inventory_item_price"));
+			
+			//check the price is displayed or not
+			  if ((product_price != null)) {
+				String dollar_icon =  product_price.getText();
+				  if(dollar_icon.contains("$")) {
+					  	System.out.println("Test Case 013:Passed");
+				  		System.out.println("Item price and dollar icon is display on the page" );		
+				  		// Take a screenshot of the price
+				  		this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Item_Price.png");	
+				  }
+				  else {
+					  System.out.println("Test Case 013: Faield");
+					  System.out.println("Item price and dollar icon is not display on the page"); 
+				  }
 			}
 			else {		
-				System.out.println("Test Case 011: Faield");
-				System.out.println("Item details are not display on the page");			
+				System.out.println("Test Case 013: Faield");
+				System.out.println("Item price is not display on the page");			
 			}
-	}*/
+	}
 		
+		//Test Case 014: Verify the item count display on cart page
+		@Test(priority=14)
+		public void VerifyItemCount() throws Exception {
+		    System.out.println("---------------TC 014---------------");
+		    Thread.sleep(2000);
+		    
+		    //Identify the item count
+		    WebElement itemcount = driver.findElement(By.className("cart_quantity"));
+		    
+		    //check the cart whether empty or not
+		    if(itemcount != null) {
+		    	System.out.println("Test Case 014: Passed");
+		        System.out.println("Display count on cart page: " + itemcount.getText());
+
+		        // Take a screenshot of the title
+		        this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Item_Count.png");
+		    	
+		    }else {
+		    	System.out.println("Test Case 014: Failed");
+		        System.out.println("No items display on the page");
+		    }
+	    
+		}
 		
+		//Test Case 015: Verify the continue shopping button
+		@Test(priority=15)
+		public void ContinueShoppingBTN() throws Exception {
+		    System.out.println("---------------TC 015---------------");
+		    Thread.sleep(2000);
+		    
+		    //Identify the item count
+		    WebElement conshp_btn = driver.findElement(By.id("continue-shopping"));
+		    conshp_btn.click();
+		    
+		    //set the expected and actual urls
+		    String expected_url = "https://www.saucedemo.com/inventory.html";
+		    String actual_url = driver.getCurrentUrl();
+		    
+		    //check the expected and actual urls
+		    if(expected_url.equals(actual_url)) {
+		    	System.out.println("Test Case 015: Passed");
+		        System.out.println("Move back to previous inventory page");
+		        // Take a screenshot of the title
+		        this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Inventory_Page.png");
+		        
+		        //click cart icon for the go to cart page
+		        Thread.sleep(3000);
+		        WebElement carticon = driver.findElement(By.xpath("html/body/div/div/div/div[1]/div[1]/div[3]/a"));
+			    carticon.click();
+		    	
+		    }else {
+		    	System.out.println("Test Case 015: Failed");
+		        System.out.println("Not go to the expected page");
+		    }
+	    
+		}
+		
+		//Test Case 016: Verify the remove button is clicked and item details are removes 
+		@Test(priority=16)
+		public void RemoveBTN() throws Exception {
+	        System.out.println("---------------TC 016---------------");
+	        Thread.sleep(3000);
+
+	        // Find the remove button and click it
+	        WebElement removeBtn = driver.findElement(By.id("remove-sauce-labs-backpack"));
+	        removeBtn.click();
+	        Thread.sleep(2000);
+	        
+	        WebElement removeitemelemnt = driver.findElement(By.className("removed_cart_item"));
+	        removeitemelemnt.getText();
+	        
+	        if (removeitemelemnt.getText() != null) { 	
+	        	//item is not displayed
+	            System.out.println("Test Case 016: Passed");
+	            System.out.println("Item is removed after the click the remove button");
+
+	            // Take a screenshot of the title
+	            this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Empty_Cart_Page.png");
+	            Thread.sleep(2000);
+
+	            // go back to items page again
+	            driver.navigate().back();
+	            Thread.sleep(3000);
+
+	            // add again item and come to the cart
+	            addCart();
+	        } else {
+	        	//item is displayed
+	            System.out.println("Test Case 016: Failed");
+	            System.out.println("Item is not removed after the click the remove button");
+	        	
+	        }
+		}
 
 	
 	//After test
@@ -515,10 +588,21 @@ public class Individual_Assignment {
 		Thread.sleep(2000);
 		WebElement loginbtn = driver.findElement(By.id("login-button"));
 		loginbtn.click();
-		
 		Thread.sleep(3000);
+	}
+	
+	public void addCart() throws Exception{
 		
-		
+		//find the add to cart button and click it
+		WebElement addcart_btn = driver.findElement(By.id("add-to-cart-sauce-labs-backpack"));
+	    addcart_btn.click();
+	    Thread.sleep(2000);
+	    
+	    //find the cart icon and click it
+	    WebElement carticon = driver.findElement(By.xpath("html/body/div/div/div/div[1]/div[1]/div[3]/a"));
+	    carticon.click();
+	    Thread.sleep(2000);
+	    
 	}
  
   
