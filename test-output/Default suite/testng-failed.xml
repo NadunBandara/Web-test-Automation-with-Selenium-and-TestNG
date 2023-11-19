@@ -5,8 +5,8 @@
     <classes>
       <class name="testNGPractical.Individual_Assignment">
         <methods>
-          <include name="RemoveBTN"/>
           <include name="AfterTestExecutionProcess"/>
+          <include name="ContinueBTN"/>
           <include name="beforeTestExecution"/>
         </methods>
       </class> <!-- testNGPractical.Individual_Assignment -->

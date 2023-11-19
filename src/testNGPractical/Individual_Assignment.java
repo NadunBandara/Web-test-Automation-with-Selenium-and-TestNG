@@ -66,7 +66,7 @@ public class Individual_Assignment {
 		
 		// Check if the error message is present
 		WebElement errorMessage = driver.findElement(By.cssSelector("#login_button_container > div > form > div.error-message-container.error > h3"));
-		
+
 		if(errorMessage.isDisplayed()) {
 			System.out.println("Test Case 001:Passed");
 			System.out.println("Login Failed");
@@ -470,7 +470,7 @@ public class Individual_Assignment {
 		    	System.out.println("Test Case 014: Passed");
 		        System.out.println("Display count on cart page: " + itemcount.getText());
 
-		        // Take a screenshot of the title
+		        // Take a screenshot of item count
 		        this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Item_Count.png");
 		    	
 		    }else {
@@ -498,7 +498,7 @@ public class Individual_Assignment {
 		    if(expected_url.equals(actual_url)) {
 		    	System.out.println("Test Case 015: Passed");
 		        System.out.println("Move back to previous inventory page");
-		        // Take a screenshot of the title
+		        // Take a screenshot of the move back page
 		        this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Inventory_Page.png");
 		        
 		        //click cart icon for the go to cart page
@@ -532,7 +532,7 @@ public class Individual_Assignment {
 	            System.out.println("Test Case 016: Passed");
 	            System.out.println("Item is removed after the click the remove button");
 
-	            // Take a screenshot of the title
+	            // Take a screenshot of the empty page
 	            this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Empty_Cart_Page.png");
 	            Thread.sleep(2000);
 
@@ -549,7 +549,114 @@ public class Individual_Assignment {
 	        	
 	        }
 		}
-
+		
+		//Test Case 017: Verify the checkout button
+		@Test(priority=17)
+		public void CheckoutBTN() throws Exception {
+		    System.out.println("---------------TC 016---------------");
+		    Thread.sleep(2000);
+		    
+		    //Identify the checkout button
+		    WebElement chkout_btn = driver.findElement(By.id("checkout"));
+		    chkout_btn.click();
+		    
+		    //set the expected and actual urls
+		    String expected_url = "https://www.saucedemo.com/checkout-step-one.html";
+		    String actual_url = driver.getCurrentUrl();
+		    
+		    if(expected_url.equals(actual_url)) {
+		    	//load the checkout page
+		    	System.out.println("Test Case 017: Passed");
+	            System.out.println("Successfully load the checkout page");
+	            // Take a screenshot of checkout page
+	            this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Checkout_Page.png");	            
+		    }
+		    else {
+		    	//checkout page is not load
+	            System.out.println("Test Case 017: Failed");
+	            System.out.println("Checkout page is not load");
+		    }
+		}
+		
+		//Test Case 018:Verify the loaded checkout page
+		@Test(priority=18)
+		public void VerifyCheckoutHeaderText() throws Exception {
+			System.out.println("---------------TC 018---------------");
+			Thread.sleep(2000);
+			
+			//find header text called "Checkout: Your Information"
+			WebElement elementheadtxt = driver.findElement(By.className("title"));
+			elementheadtxt.getText();	
+					
+			//check the text displayed or not
+			  if (elementheadtxt.isDisplayed()) {
+				System.out.println("Test Case 018:Passed");
+				System.out.println("Displayed the expected text on page header: " + elementheadtxt.getText() );		
+				// Take a screenshot of the text "Checkout: Your Information"
+				this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Displaytxt_Checkout: Your Information.png");					
+			}
+			else {		
+				System.out.println("Test Case 018: Faield");
+				System.out.println("Expected text is not displayed");			
+			}
+	}
+		
+		//Test Case: Verify the cancel button
+		@Test(priority=19)
+		public void CancelBTN() throws Exception {
+		    System.out.println("---------------TC 019---------------");
+		    Thread.sleep(2000);
+		    
+		    //Identify the checkout button
+		    WebElement cancel_btn = driver.findElement(By.id("cancel"));
+		    cancel_btn.click();
+		    
+		    //set the expected and actual urls
+		    String expected_url = "https://www.saucedemo.com/cart.html";
+		    String actual_url = driver.getCurrentUrl();
+		    
+		    if(expected_url.equals(actual_url)) {
+		    	//load the cart page
+		    	System.out.println("Test Case 019: Passed");
+	            System.out.println("Successfully! work the cancel button");
+	            // Take a screenshot of page that come after the click Cancel button
+	            this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\After_Cancel_Page.png");
+	            Thread.sleep(2000);
+	            
+	            WebElement chkout_btn = driver.findElement(By.id("checkout"));
+			    chkout_btn.click();
+	            
+		    }
+		    else {
+		    	//cart page is not load
+	            System.out.println("Test Case 019: Failed");
+	            System.out.println("Cancel button is not work");
+		    }
+		}
+		
+		//Test Case 020: Verify the continue button without filling form
+		@Test(priority=20)
+		public void ContinueBTN() throws Exception {
+			System.out.println("---------------TC 020---------------");
+			Thread.sleep(2000);
+			
+			WebElement continue_btn = driver.findElement(By.id("continue"));
+			continue_btn.click();
+			Thread.sleep(1000);
+			
+			WebElement errormsg = driver.findElement(By.cssSelector("#checkout_info_container > div > form > div.checkout_info > div.error-message-container.error"));
+			
+			if(errormsg.isDisplayed()) {
+				System.out.println("Test Case 020: Passed");
+	            System.out.println("Error mesaage is popup after the click continue button without fill the form");
+	            //Take the screenshot of the error message
+	            this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Checkout_Error.png");
+			}
+            System.out.println("Test Case 019: Failed");
+            System.out.println("Error mesaage is not popup after the click continue button without fill the form");
+		}
+		
+		
 	
 	//After test
 	@AfterTest
