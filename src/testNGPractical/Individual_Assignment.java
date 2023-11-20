@@ -42,7 +42,6 @@ public class Individual_Assignment {
 	
 	//Test cases
 	//Test case 001 : Incorrect UN & PW
-	/*
 	@Test(priority=1)
 	public void FailedUserLoginFunction1() throws Exception
 	{
@@ -210,13 +209,12 @@ public class Individual_Assignment {
 			}
 			
 		}
-		*/
 		
 		//Test Case 005: Verify the loaded page
 		@Test(priority=5)
 		public void VerifyLoadedResult() throws Exception {
 			System.out.println("---------------TC 005---------------");
-			UserLogin();
+			//UserLogin();
 			Thread.sleep(2000);
 			
 			//Find all product list
@@ -593,7 +591,7 @@ public class Individual_Assignment {
 				System.out.println("Test Case 018:Passed");
 				System.out.println("Displayed the expected text on page header: " + elementheadtxt.getText() );		
 				// Take a screenshot of the text "Checkout: Your Information"
-				this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Displaytxt_Checkout: Your Information.png");					
+				this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Displaytxt_Your_Information.png");					
 			}
 			else {		
 				System.out.println("Test Case 018: Faield");
@@ -636,7 +634,7 @@ public class Individual_Assignment {
 		
 		//Test Case 020: Verify the continue button without filling form
 		@Test(priority=20)
-		public void ContinueBTN() throws Exception {
+		public void ContinueBTNerr1() throws Exception {
 			System.out.println("---------------TC 020---------------");
 			Thread.sleep(2000);
 			
@@ -652,9 +650,278 @@ public class Individual_Assignment {
 	            //Take the screenshot of the error message
 	            this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Checkout_Error.png");
 			}
-            System.out.println("Test Case 019: Failed");
-            System.out.println("Error mesaage is not popup after the click continue button without fill the form");
+			else {
+				System.out.println("Test Case 020: Failed");
+				System.out.println("Error mesaage is not popup after the click continue button without fill the form");
+			}
 		}
+		
+		//Test Case 021: Verify the continue button with half fill form
+		@Test(priority=21)
+		public void ContinueBTNerr2() throws Exception {
+			System.out.println("---------------TC 021---------------");
+			Thread.sleep(2000);
+			
+			//refresh the page
+			driver.navigate().refresh();
+			
+			//find the first name element
+			WebElement first_name = driver.findElement(By.id("first-name"));
+			first_name.sendKeys("Nadun");
+			
+			//find the continue button
+			WebElement continue_btn = driver.findElement(By.id("continue"));
+			continue_btn.click();
+			Thread.sleep(1000);
+			
+			//find the error message
+			WebElement errormsg = driver.findElement(By.cssSelector("#checkout_info_container > div > form > div.checkout_info > div.error-message-container.error"));
+			
+			//find the error icon
+			WebElement error_icon = driver.findElement(By.cssSelector("#checkout_info_container > div > form > div.checkout_info > div:nth-child(1) > svg"));
+						
+			if(errormsg.isDisplayed()) {
+				if(error_icon.isDisplayed()) {
+					System.out.println("Test Case 021: Failed");
+		            System.out.println("Error Icon is sitll showing on first name fiels");
+		            //Take the screenshot of the error icon
+		            this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Error_Icon_onfirstname.png");
+				}
+				else {
+					System.out.println("Test Case 021: Passes");
+					System.out.println("Error Icon is sitll showing on first name fiels");
+				}
+			}
+			else{
+				System.out.println("Test Case 021: Failed");
+				System.out.println("Error mesaage is not popup after the click continue button without fill the form");
+			}
+		}
+		
+		//Test Case 022: Verify the continue button with fill all fields in the form
+		@Test(priority=22)
+		public void ContinueBTN() throws Exception {
+			System.out.println("---------------TC 021---------------");
+			Thread.sleep(2000);
+			
+			//refresh the page
+			driver.navigate().refresh();
+			Thread.sleep(1000);
+			
+			//find the first name, last name and postal code elements
+			WebElement first_name = driver.findElement(By.id("first-name"));
+			first_name.sendKeys("Nadun");
+			Thread.sleep(1000);
+			
+			WebElement last_name = driver.findElement(By.id("last-name"));
+			last_name.sendKeys("Bandara");
+			Thread.sleep(1000);
+			
+			WebElement post_code = driver.findElement(By.id("postal-code"));
+			post_code.sendKeys("71000");
+			Thread.sleep(1000);
+			
+			//find the continue button
+			WebElement continue_btn = driver.findElement(By.id("continue"));
+			continue_btn.click();
+			Thread.sleep(2000);
+			
+			//get url after the click continue button
+			String expected_url = "https://www.saucedemo.com/checkout-step-two.html";
+			String actual_url = driver.getCurrentUrl();
+			
+			//check the urls
+			if(expected_url.equals(actual_url)) {
+				
+				System.out.println("Test Case 022: Passed");
+	            System.out.println("Expected url is load after clik continue button");
+	            //Take the screenshot of the page the come after click continue button
+	            this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Expected_Page.png");
+	            
+			}
+			else {
+				
+				System.out.println("Test Case 022: Failed");
+				System.out.println("Expected url is not load after clik continue button");
+				
+			}
+		}
+		
+		//Test Case 022: Verify the header txt in checkout overview
+		@Test(priority=22)
+		public void VerifyCheckoutHeaderTxt() throws Exception {
+			System.out.println("---------------TC 022---------------");
+			Thread.sleep(2000);
+			
+			//find header text called "Checkout: Overview"
+			WebElement elementheadtxt = driver.findElement(By.className("title"));
+			elementheadtxt.getText();	
+					
+			//check the text displayed or not
+			  if (elementheadtxt.isDisplayed()) {
+				System.out.println("Test Case 022:Passed");
+				System.out.println("Displayed the expected text on page header: " + elementheadtxt.getText() );		
+				// Take a screenshot of the text "Checkout: Overview"
+				this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Displaytxt_Overview.png");					
+			}
+			else {		
+				System.out.println("Test Case 022: Faield");
+				System.out.println("Expected text is not displayed");			
+			}
+	}
+		
+		//Test Case 023: Compare the Item prices showing on overview page
+		@Test(priority=23)
+		public void ComparePrice() throws Exception {
+			System.out.println("---------------TC 023---------------");
+			Thread.sleep(2000);
+			
+			//find the prices
+			WebElement item_price = driver.findElement(By.cssSelector("#checkout_summary_container > div > div.cart_list > div.cart_item > div.cart_item_label > div.item_pricebar > div"));	
+			WebElement subtotal_price = driver.findElement(By.cssSelector("#checkout_summary_container > div > div.summary_info > div.summary_subtotal_label"));
+			
+			//get text values of the prices
+			String itemprice_txt = item_price.getText().trim().replaceAll("[^0-9.]+", "");
+			String subtotalprice_txt = subtotal_price.getText().trim().replaceAll("[^0-9.]+", "");
+			
+			//Extract the price values
+			Double itemprice_value = Double.parseDouble(itemprice_txt);
+			Double subtotalprice_value = Double.parseDouble(subtotalprice_txt);
+			
+			//Compare the prices
+			if ((itemprice_value).equals(subtotalprice_value)) {
+				
+				System.out.println("Test Case 023:Passed");
+				System.out.println("Display Prices are equal");
+				// Take a screenshot of the prices
+				this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Display_Prices.png");
+			
+			}
+			else {
+				
+				System.out.println("Test Case 023: Faield");
+				System.out.println("Display prices are not equal. "+ item_price.getText() + "and" + subtotal_price.getText() + "prices are showing");
+			
+			}
+			  
+	}
+		
+		//Test Case 024: Verify the total price calculation
+		@Test(priority=24)
+		public void PriceCalculation() throws Exception {
+			System.out.println("---------------TC 024---------------");
+			Thread.sleep(2000);
+			
+			//find the prices: item total, tax, total	
+			WebElement subtotal_price = driver.findElement(By.cssSelector("#checkout_summary_container > div > div.summary_info > div.summary_subtotal_label"));
+			WebElement tax_price = driver.findElement(By.cssSelector("#checkout_summary_container > div > div.summary_info > div.summary_tax_label"));
+			WebElement total_price = driver.findElement(By.cssSelector("#checkout_summary_container > div > div.summary_info > div.summary_info_label.summary_total_label"));
+			
+			//get text values of the prices
+			String subtotalprice_txt = subtotal_price.getText().trim().replaceAll("[^0-9.]+", "");
+			String taxprice_txt = tax_price.getText().trim().replaceAll("[^0-9.]+", "");
+			String totalprice_txt = total_price.getText().trim().replaceAll("[^0-9.]+", "");
+
+			
+			//Extract the price values
+			Double subtotalprice_value = Double.parseDouble(subtotalprice_txt);
+			Double taxprice_value = Double.parseDouble(taxprice_txt);
+			Double totalprice_value = Double.parseDouble(totalprice_txt);
+			
+			//Compare the prices
+			if ((subtotalprice_value)+(taxprice_value) == (totalprice_value)) {
+				
+				System.out.println("Test Case 024:Passed");
+				System.out.println("Price calcuation is correct. Total price is "+ total_price.getText());
+				// Take a screenshot of the prices
+				this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Display_Total_Price_Calculation.png");
+			
+			}
+			else {
+				
+				System.out.println("Test Case 024: Faield");
+				System.out.println("Price calcuation is not correct");
+			
+			}			 
+	}
+		
+		//Test Case 25: Verify the finished button
+		@Test(priority=25)
+		public void finishbutton() throws Exception {
+			System.out.println("---------------TC 025---------------");
+			Thread.sleep(2000);
+			
+			//find the finish button	
+			WebElement finish_btn = driver.findElement(By.id("finish"));
+			finish_btn.click();
+			Thread.sleep(2000);
+			
+			//get url after the click finish button 
+			String expected_url = "https://www.saucedemo.com/checkout-complete.html";
+			String actual_url = driver.getCurrentUrl();
+			
+			if(expected_url.equals(actual_url)) {
+				
+				System.out.println("Test Case 025.1:Passed");
+				System.out.println("Expected page is load after the click finish button");
+				// Take a screenshot of the final loaded page
+				this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Final_Expected_Page.png");
+				Thread.sleep(2000);
+				
+				//find header text called "Checkout: Complete!"
+				WebElement elementheadtxt = driver.findElement(By.className("title"));
+				elementheadtxt.getText();	
+						
+				  //check the text displayed or not
+				  if (elementheadtxt.isDisplayed()) {
+					System.out.println("Test Case 025.2:Passed");
+					System.out.println("Displayed the expected text on page header: " + elementheadtxt.getText() );		
+					// Take a screenshot of the text "Checkout: Overview"
+					this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Displaytxt_Complete.png");	
+					Thread.sleep(2000);
+					
+					//find the complete message 
+					WebElement complete_msg = driver.findElement(By.cssSelector("#checkout_complete_container > h2"));
+					complete_msg.getText();
+					
+					//check the complete message displayed or not
+						if (complete_msg.isDisplayed()) {
+						
+							System.out.println("Test Case 025.3:Passed");
+							System.out.println("Displayed the complete message on page: " + complete_msg.getText() );
+							this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Display_Complete_Message.png");
+							Thread.sleep(1000);
+							
+							//Go back to home
+							WebElement gohome_btn = driver.findElement(By.cssSelector("#back-to-products"));
+							gohome_btn.click();
+							
+							System.out.println("---------------Finished Test Swag Labs Application---------------");
+							System.out.println("===============================================");
+							System.out.println("---------------Complete The Assignment---------------");
+							System.out.println("===============================================");
+							System.out.println("---------------Student Name: Nadun Dhananjaya Bandara---------------");
+						
+						}
+						else {
+							
+							System.out.println("Test Case 025.3: Faield");
+							System.out.println("Expected complete message is not displayed");
+							
+						}
+				  }
+				  else {		
+					  System.out.println("Test Case 025.2: Faield");
+					  System.out.println("Expected text is not displayed");			
+				  }
+			}
+			else {
+				
+				System.out.println("Test Case 025.1:Failed");
+				System.out.println("Expected page is not load after the click finish button");
+				
+			}			 
+	}
 		
 		
 	
@@ -681,6 +948,7 @@ public class Individual_Assignment {
 		Files.copy(SrcFile, DestFile);
 	}
 	
+	//user this for help to continue to prevent the all code parts run while coding
 	public void UserLogin() throws InterruptedException {
 		driver.get(baseURL);
 		Thread.sleep(3000);
