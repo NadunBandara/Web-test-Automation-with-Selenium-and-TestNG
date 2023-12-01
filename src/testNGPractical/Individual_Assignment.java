@@ -551,7 +551,7 @@ public class Individual_Assignment {
 		//Test Case 017: Verify the checkout button
 		@Test(priority=17)
 		public void CheckoutBTN() throws Exception {
-		    System.out.println("---------------TC 016---------------");
+		    System.out.println("---------------TC 017---------------");
 		    Thread.sleep(2000);
 		    
 		    //Identify the checkout button
@@ -599,7 +599,7 @@ public class Individual_Assignment {
 			}
 	}
 		
-		//Test Case: Verify the cancel button
+		//Test Case 019: Verify the cancel button
 		@Test(priority=19)
 		public void CancelBTN() throws Exception {
 		    System.out.println("---------------TC 019---------------");
@@ -701,7 +701,7 @@ public class Individual_Assignment {
 		//Test Case 022: Verify the continue button with fill all fields in the form
 		@Test(priority=22)
 		public void ContinueBTN() throws Exception {
-			System.out.println("---------------TC 021---------------");
+			System.out.println("---------------TC 022---------------");
 			Thread.sleep(2000);
 			
 			//refresh the page
@@ -747,10 +747,10 @@ public class Individual_Assignment {
 			}
 		}
 		
-		//Test Case 022: Verify the header txt in checkout overview
-		@Test(priority=22)
+		//Test Case 023: Verify the header txt in checkout overview
+		@Test(priority=23)
 		public void VerifyCheckoutHeaderTxt() throws Exception {
-			System.out.println("---------------TC 022---------------");
+			System.out.println("---------------TC 023---------------");
 			Thread.sleep(2000);
 			
 			//find header text called "Checkout: Overview"
@@ -759,21 +759,21 @@ public class Individual_Assignment {
 					
 			//check the text displayed or not
 			  if (elementheadtxt.isDisplayed()) {
-				System.out.println("Test Case 022:Passed");
+				System.out.println("Test Case 023:Passed");
 				System.out.println("Displayed the expected text on page header: " + elementheadtxt.getText() );		
 				// Take a screenshot of the text "Checkout: Overview"
 				this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Displaytxt_Overview.png");					
 			}
 			else {		
-				System.out.println("Test Case 022: Faield");
+				System.out.println("Test Case 023: Faield");
 				System.out.println("Expected text is not displayed");			
 			}
 	}
 		
-		//Test Case 023: Compare the Item prices showing on overview page
-		@Test(priority=23)
+		//Test Case 024: Compare the Item prices showing on overview page
+		@Test(priority=24)
 		public void ComparePrice() throws Exception {
-			System.out.println("---------------TC 023---------------");
+			System.out.println("---------------TC 024---------------");
 			Thread.sleep(2000);
 			
 			//find the prices
@@ -791,7 +791,7 @@ public class Individual_Assignment {
 			//Compare the prices
 			if ((itemprice_value).equals(subtotalprice_value)) {
 				
-				System.out.println("Test Case 023:Passed");
+				System.out.println("Test Case 024:Passed");
 				System.out.println("Display Prices are equal");
 				// Take a screenshot of the prices
 				this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Display_Prices.png");
@@ -799,17 +799,17 @@ public class Individual_Assignment {
 			}
 			else {
 				
-				System.out.println("Test Case 023: Faield");
+				System.out.println("Test Case 024: Faield");
 				System.out.println("Display prices are not equal. "+ item_price.getText() + "and" + subtotal_price.getText() + "prices are showing");
 			
 			}
 			  
 	}
 		
-		//Test Case 024: Verify the total price calculation
-		@Test(priority=24)
+		//Test Case 025: Verify the total price calculation
+		@Test(priority=25)
 		public void PriceCalculation() throws Exception {
-			System.out.println("---------------TC 024---------------");
+			System.out.println("---------------TC 025---------------");
 			Thread.sleep(2000);
 			
 			//find the prices: item total, tax, total	
@@ -831,7 +831,7 @@ public class Individual_Assignment {
 			//Compare the prices
 			if ((subtotalprice_value)+(taxprice_value) == (totalprice_value)) {
 				
-				System.out.println("Test Case 024:Passed");
+				System.out.println("Test Case 025:Passed");
 				System.out.println("Price calcuation is correct. Total price is "+ total_price.getText());
 				// Take a screenshot of the prices
 				this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Display_Total_Price_Calculation.png");
@@ -839,16 +839,16 @@ public class Individual_Assignment {
 			}
 			else {
 				
-				System.out.println("Test Case 024: Faield");
+				System.out.println("Test Case 025: Faield");
 				System.out.println("Price calcuation is not correct");
 			
 			}			 
 	}
 		
-		//Test Case 25: Verify the finished button
-		@Test(priority=25)
+		//Test Case 026: Verify the finished button
+		@Test(priority=26)
 		public void finishbutton() throws Exception {
-			System.out.println("---------------TC 025---------------");
+			System.out.println("---------------TC 026---------------");
 			Thread.sleep(2000);
 			
 			//find the finish button	
@@ -862,7 +862,7 @@ public class Individual_Assignment {
 			
 			if(expected_url.equals(actual_url)) {
 				
-				System.out.println("Test Case 025.1:Passed");
+				System.out.println("Test Case 026.1:Passed");
 				System.out.println("Expected page is load after the click finish button");
 				// Take a screenshot of the final loaded page
 				this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Final_Expected_Page.png");
@@ -874,7 +874,7 @@ public class Individual_Assignment {
 						
 				  //check the text displayed or not
 				  if (elementheadtxt.isDisplayed()) {
-					System.out.println("Test Case 025.2:Passed");
+					System.out.println("Test Case 026.2:Passed");
 					System.out.println("Displayed the expected text on page header: " + elementheadtxt.getText() );		
 					// Take a screenshot of the text "Checkout: Overview"
 					this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Displaytxt_Complete.png");	
@@ -887,7 +887,7 @@ public class Individual_Assignment {
 					//check the complete message displayed or not
 						if (complete_msg.isDisplayed()) {
 						
-							System.out.println("Test Case 025.3:Passed");
+							System.out.println("Test Case 026.3:Passed");
 							System.out.println("Displayed the complete message on page: " + complete_msg.getText() );
 							this.takeSnapShot(driver, "C:\\Users\\user\\Desktop\\SS\\Display_Complete_Message.png");
 							Thread.sleep(1000);
@@ -896,28 +896,29 @@ public class Individual_Assignment {
 							WebElement gohome_btn = driver.findElement(By.cssSelector("#back-to-products"));
 							gohome_btn.click();
 							
+							System.out.println("");
 							System.out.println("---------------Finished Test Swag Labs Application---------------");
 							System.out.println("===============================================");
 							System.out.println("---------------Complete The Assignment---------------");
 							System.out.println("===============================================");
 							System.out.println("---------------Student Name: Nadun Dhananjaya Bandara---------------");
-						
+							System.out.println("");
 						}
 						else {
 							
-							System.out.println("Test Case 025.3: Faield");
+							System.out.println("Test Case 026.3: Faield");
 							System.out.println("Expected complete message is not displayed");
 							
 						}
 				  }
 				  else {		
-					  System.out.println("Test Case 025.2: Faield");
+					  System.out.println("Test Case 026.2: Faield");
 					  System.out.println("Expected text is not displayed");			
 				  }
 			}
 			else {
 				
-				System.out.println("Test Case 025.1:Failed");
+				System.out.println("Test Case 026.1:Failed");
 				System.out.println("Expected page is not load after the click finish button");
 				
 			}			 
@@ -979,6 +980,4 @@ public class Individual_Assignment {
 	    Thread.sleep(2000);
 	    
 	}
- 
-  
 }
