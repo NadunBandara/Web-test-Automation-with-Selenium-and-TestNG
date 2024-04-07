@@ -27,7 +27,7 @@ public class Individual_Assignment {
 	
 	//Global variable declaration
 	public String baseURL="https://www.saucedemo.com/";
-	public String driverPath="D:\\Eclipse-workplace\\SQA_Batch26_TestNG\\Thirdparty_Resource_Files\\Chrome Driver\\V119.exe";
+	public String driverPath="D:\\Eclipse-workplace\\SQA_Batch26_TestNG\\Thirdparty_Resource_Files\\Chrome Driver\\V123.exe";
 	public WebDriver driver;
 	
 	//Before test

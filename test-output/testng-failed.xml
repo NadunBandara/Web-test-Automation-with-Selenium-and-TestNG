@@ -5,10 +5,9 @@
     <classes>
       <class name="testNGPractical.Individual_Assignment">
         <methods>
-          <include name="ComparePrice"/>
           <include name="AfterTestExecutionProcess"/>
-          <include name="PriceCalculation"/>
           <include name="beforeTestExecution"/>
+          <include name="PriceCalculation"/>
         </methods>
       </class> <!-- testNGPractical.Individual_Assignment -->
     </classes>
